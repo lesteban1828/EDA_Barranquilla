@@ -1,0 +1,44 @@
+# Publica el libro en GitHub Pages cada vez que se sube algo a la rama main.
+# Los notebooks se suben ya ejecutados, así que aquí no se corre el análisis.
+name: Publicar el libro
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: /${{ github.event.repository.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar Jupyter Book
+        run: pip install "jupyter-book>=2"
+      - name: Construir el libro
+        run: jupyter book build --html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_build/html
+      - id: deployment
+        uses: actions/deploy-pages@v4

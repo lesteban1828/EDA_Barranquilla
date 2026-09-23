@@ -1,0 +1,12 @@
+# Libro construido
+_build/
+
+# Python y Jupyter
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

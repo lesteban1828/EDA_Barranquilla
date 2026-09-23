@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  id: eda-vivienda-barranquilla
+  title: Determinantes del precio de la vivienda en Barranquilla
+  subtitle: Análisis exploratorio de compraventas, ubicación y valor catastral (2016-2025)
+  description: >-
+    Análisis exploratorio de las compraventas de vivienda en Barranquilla entre 2016 y
+    2025, construido a partir del cruce de cuatro fuentes con el catastro.
+  authors:
+    - name: Luis Esteban Mariño Bornacelli
+      affiliations:
+        - Universidad del Norte
+    - name: Juan Esteban García
+      affiliations:
+        - Universidad del Norte
+    - name: Camilo González
+      affiliations:
+        - Universidad del Norte
+  keywords:
+    - precio de vivienda
+    - Barranquilla
+    - catastro
+    - análisis exploratorio
+  toc:
+    - file: intro.md
+    - file: 01_datos.ipynb
+    - file: 02_univariado.ipynb
+    - file: 03_bivariado.ipynb
+    - file: 04_avaluo.ipynb
+    - file: 05_geoespacial.ipynb
+    - file: 06_conclusiones.md
+  exclude:
+    - README.md
+    - datos/**
+
+site:
+  template: book-theme
