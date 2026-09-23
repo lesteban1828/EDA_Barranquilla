@@ -1,12 +1,6 @@
 # Determinantes del precio de la vivienda en Barranquilla
 
-**Análisis exploratorio de compraventas, ubicación y valor catastral (2016-2025)**
-
-Luis Esteban Mariño Bornacelli · Juan Esteban García · Camilo González
-
-Universidad del Norte, Seminario de investigación · Septiembre de 2026
-
----
+Seminario de investigación, Universidad del Norte · Septiembre de 2026
 
 Este libro es la fase de análisis exploratorio del proyecto *Predicción del precio de
 vivienda en Barranquilla mediante Machine Learning*. Antes de entrenar los modelos
