@@ -7,16 +7,6 @@ project:
   description: >-
     Análisis exploratorio de las compraventas de vivienda en Barranquilla entre 2016 y
     2025, construido a partir del cruce de cuatro fuentes con el catastro.
-  authors:
-    - name: Luis Esteban Mariño Bornacelli
-      affiliations:
-        - Universidad del Norte
-    - name: Juan Esteban García
-      affiliations:
-        - Universidad del Norte
-    - name: Camilo González
-      affiliations:
-        - Universidad del Norte
   keywords:
     - precio de vivienda
     - Barranquilla

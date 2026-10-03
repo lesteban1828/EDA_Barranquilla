@@ -2,9 +2,6 @@
 
 ## Resumen de pruebas
 
-Con más de 15 mil datos casi todo resulta significativo, así que la columna que importa
-es el tamaño del efecto.
-
 | Pregunta | Prueba | p-valor | Tamaño del efecto |
 |---|---|---|---|
 | ¿El precio cambia cuando falta el avalúo? | Mann-Whitney | < 0,001 | P(sin dato > con dato) = 0,58 |

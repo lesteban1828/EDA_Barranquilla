@@ -1,3 +1,9 @@
+---
+authors:
+  - Luis Esteban Mariño Bornacelli
+  - Juan Esteban García
+  - Camilo González
+---
 # Determinantes del precio de la vivienda en Barranquilla
 
 Seminario de investigación, Universidad del Norte · Septiembre de 2026

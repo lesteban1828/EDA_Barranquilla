@@ -45,7 +45,6 @@ pio.templates["eda"] = go.layout.Template(layout=dict(
 pio.templates.default = "plotly_white+eda"
 
 def cop(x):
-    """Plata en formato legible."""
     if pd.isna(x):
         return "-"
     if abs(x) >= 1e9:
@@ -60,8 +59,7 @@ def mostrar(fig, titulo, alto=450):
     fig.update_layout(title=titulo, height=alto)
     fig.show()
 
-# Herramientas para las pruebas estadísticas. Cada prueba que hacemos queda
-# guardada en PRUEBAS y al final se muestran todas juntas (sección 8).
+# cada prueba se va guardando aquí para la tabla del final
 PRUEBAS = []
 
 def p_texto(p):
@@ -101,7 +99,7 @@ import contextlib as _contextlib
 import io as _io
 
 _mostrar = mostrar
-mostrar = lambda *args, **kwargs: None      # no mostrar gráficos al preparar la base
+mostrar = lambda *args, **kwargs: None  # no mostrar gráficos al preparar la base
 
 with _contextlib.redirect_stdout(_io.StringIO()):
     df = pd.read_csv("datos/base_final_excel_es.csv", sep=";", decimal=",", low_memory=False)
@@ -124,10 +122,10 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     df = df[df.apto_modelo].copy().reset_index(drop=True)
 
     # códigos del catastro que no son mediciones: se pasan a vacío sin borrar la fila
-    df.loc[df.piso >= 90, "piso"] = np.nan                     # código de sótano
+    df.loc[df.piso >= 90, "piso"] = np.nan  # código de sótano
     df.loc[~df.anio_construccion.between(1900, 2025), "anio_construccion"] = np.nan
-    df.loc[df.avaluo <= 0, "avaluo"] = np.nan                   # sin avalúo
-    df.loc[df.habitaciones > 20, "habitaciones"] = np.nan       # totales de edificio
+    df.loc[df.avaluo <= 0, "avaluo"] = np.nan  # sin avalúo
+    df.loc[df.habitaciones > 20, "habitaciones"] = np.nan  # totales de edificio
     df.loc[df.banios > 20, "banios"] = np.nan
 
     df["edad"] = df.anio - df.anio_construccion
@@ -165,7 +163,6 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     fuera = viv0[~viv0.precio_m2_en_rango]
     bien = viv0[viv0.precio_m2_en_rango]
 
-    # Rango que acepta la bandera de la base
     print(f"Rango aceptado: de {cop(bien.precio_m2.min())} a {cop(bien.precio_m2.max())} por m²")
     print(f"Viviendas fuera de rango: {len(fuera):,} de {len(viv0):,} ({len(fuera)/len(viv0):.1%})")
 
@@ -188,7 +185,6 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     print(f"Copias quitadas: {copias.sum():,}  ({alameda[copias].mean():.0%} de Alameda del Río)")
     print(f"Peso de Alameda del Río: {alameda.mean():.1%} con copias, {alameda[~copias].mean():.1%} sin copias")
 
-    # columnas de apoyo para los gráficos
     viv["estrato_txt"] = viv.estrato.astype(str).map(dict(zip(ESTRATOS, NOMBRES_ESTRATO))).fillna("Sin estrato")
     viv["barrio_txt"] = viv.barrio.fillna("sin barrio").str.title()
     viv["precio_txt"] = viv.precio_real.map(cop)
