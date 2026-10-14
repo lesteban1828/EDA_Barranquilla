@@ -59,16 +59,10 @@ def mostrar(fig, titulo, alto=450):
     fig.update_layout(title=titulo, height=alto)
     fig.show()
 
-# cada prueba se va guardando aquí para la tabla del final
-PRUEBAS = []
-
 def p_texto(p):
     return "< 0,001" if p < 0.001 else f"{p:.3f}".replace(".", ",")
 
 def anotar(pregunta, prueba, estadistico, p, efecto=""):
-    PRUEBAS.append({"Pregunta": pregunta, "Prueba": prueba,
-                    "Estadístico": round(float(estadistico), 3), "p-valor": p_texto(p),
-                    "Tamaño del efecto": efecto})
     print(f"{prueba}: estadístico = {estadistico:,.3f}   p = {p_texto(p)}   {efecto}")
 
 def holm(pvalores):
@@ -198,4 +192,3 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     mostrar(fig, "De la base completa a la base de análisis", alto=380)
 
 mostrar = _mostrar
-PRUEBAS = []

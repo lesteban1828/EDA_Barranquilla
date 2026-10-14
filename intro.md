@@ -29,7 +29,7 @@ registros, de los que quedan 15.459 viviendas después de la limpieza.
    cambia esa diferencia entre zonas y estratos.
 5. **Análisis geoespacial.** Mapas de ventas, precios y estratos, y dependencia espacial
    del precio.
-6. **Conclusiones.** Resumen de las pruebas estadísticas y hallazgos para el modelo.
+6. **Conclusiones.** Hallazgos para el modelo y limitaciones de la base.
 
 ## Cómo leerlo
 

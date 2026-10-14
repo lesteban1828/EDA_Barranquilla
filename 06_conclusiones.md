@@ -1,7 +1,5 @@
 # Conclusiones
 
-
-
 ## Hallazgos
 
 1. De 68.709 compraventas quedan 15.459 viviendas útiles, después de filtrar
