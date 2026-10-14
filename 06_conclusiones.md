@@ -1,22 +1,6 @@
 # Conclusiones
 
-## Resumen de pruebas
 
-| Pregunta | Prueba | p-valor | Tamaño del efecto |
-|---|---|---|---|
-| ¿El precio cambia cuando falta el avalúo? | Mann-Whitney | < 0,001 | P(sin dato > con dato) = 0,58 |
-| ¿El precio cambia cuando falta el año de construcción? | Mann-Whitney | < 0,001 | P(sin dato > con dato) = 0,59 |
-| ¿El precio sube con el área? | Correlación de Spearman | < 0,001 | rho = 0,48 (IC 95%: 0,47 a 0,49) |
-| ¿El precio por m² difiere entre estratos? | Kruskal-Wallis | < 0,001 | épsilon² = 0,36 |
-| ¿El estrato 5 es más caro por m² que el 4? | Mann-Whitney | 0,094 | medianas de 4,6 M y 4,3 M |
-| ¿El precio por m² difiere entre barrios? | Kruskal-Wallis | < 0,001 | épsilon² = 0,58 |
-| ¿El precio por m² difiere entre localidades? | Kruskal-Wallis | < 0,001 | épsilon² = 0,46 |
-| ¿El m² real cambia entre 2019 y 2025? | Kruskal-Wallis | < 0,001 | épsilon² = 0,05 |
-| ¿Se paga por encima del avalúo? | Wilcoxon de rangos con signo | < 0,001 | mediana = 1,54 |
-| ¿La razón precio/avalúo cambia con el estrato? | Kruskal-Wallis | < 0,001 | épsilon² = 0,01 |
-| ¿A mayor estrato, mayor subvaloración? | Correlación de Spearman | < 0,001 | rho = 0,08 |
-| ¿El estrato depende de la localidad? | Chi-cuadrado de independencia | < 0,001 | V de Cramér = 0,53 |
-| ¿El precio por m² depende del de las vecinas? | I de Moran (999 permutaciones) | 0,001 | I = 0,59 |
 
 ## Hallazgos
 

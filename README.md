@@ -17,7 +17,7 @@ de vivienda en Barranquilla mediante Machine Learning*, organizado como un Jupyt
 ├── 03_bivariado.ipynb       Precio frente a área, estrato, barrio, año y características
 ├── 04_avaluo.ipynb          Precio contra avalúo catastral
 ├── 05_geoespacial.ipynb     Mapas y dependencia espacial
-├── 06_conclusiones.md       Resumen de pruebas, hallazgos y limitaciones
+├── 06_conclusiones.md       Hallazgos y limitaciones
 ├── eda_utils.py             Preparación de la base que comparten los capítulos
 ├── datos/
 │   ├── base_final_excel_es.csv       Base de compraventas
