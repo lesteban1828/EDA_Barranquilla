@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
+from matplotlib.colors import LinearSegmentedColormap
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.io as pio
@@ -24,18 +25,24 @@ pd.set_option("display.max_columns", 60)
 pd.set_option("display.width", 160)
 pd.set_option("display.float_format", lambda x: f"{x:,.2f}")
 
-AZUL, ROJO, VERDE, GRIS = "#2F6F9F", "#C7522A", "#6A9B4F", "#9FB8CC"
+# Un solo tono gris azulado: PRINCIPAL para las barras y puntos, OSCURO para
+# destacar (medianas, líneas de referencia) y CLARO para lo secundario.
+PRINCIPAL, OSCURO, CLARO = "#577189", "#24384C", "#C3CED8"
 ORDEN_ESTRATO = ["Bajo_Bajo_1", "Bajo_2", "Medio_Bajo_3", "Medio_4", "Medio_Alto_5", "Alto_6", "No_Aplica", "Otro"]
 ESTRATOS = ORDEN_ESTRATO[:6]
 NOMBRES_ESTRATO = [f"Estrato {i}" for i in range(1, 7)]
-COLORES_ESTRATO = ["#253494", "#2C7FB8", "#41B6C4", "#FDAE61", "#F46D43", "#A50026"]
+# Estratos de claro (1) a oscuro (6) en el mismo tono
+COLORES_ESTRATO = ["#B3C0CC", "#93A5B5", "#7890A3", "#577189", "#3C546B", "#24384C"]
+# Para mapas y correlaciones
+ESCALA_SECUENCIAL = ["#D5DDE4", "#A9B8C5", "#7890A3", "#3C546B", "#1B2A38"]
+ESCALA_DIVERGENTE = [[0, "#8C6A4F"], [0.5, "#F2F2F0"], [1, "#3C546B"]]
 NO_BARRIOS = ["RURAL", "ZONA NO DESARROLLADA", "SIN LOCALIDAD"]
 
 # Gráficos interactivos: el formato que lee VS Code y HTML para Jupyter
 pio.renderers.default = "plotly_mimetype+notebook_connected"
 pio.templates["eda"] = go.layout.Template(layout=dict(
     font=dict(family="Segoe UI, Arial", size=13, color="#222"),
-    colorway=[AZUL, ROJO, VERDE, "#E0A030", "#7B5EA7", "#3BA3A3"],
+    colorway=[PRINCIPAL, OSCURO, CLARO, "#7890A3", "#3C546B", "#93A5B5"],
     title=dict(x=0.01, font=dict(size=17)),
     margin=dict(l=60, r=30, t=80, b=50),
     xaxis=dict(gridcolor="#EEEEEE", zeroline=False),
@@ -188,7 +195,7 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     pasos = pd.Series({"Base completa": n_total, "apto_modelo": len(df), "Viviendas": len(viv0),
                        "Precio por m² en rango": len(bien), "Sin copias": len(viv)})
     fig = go.Figure(go.Funnel(y=pasos.index, x=pasos.values, textinfo="value+percent initial",
-                              marker_color=[GRIS, GRIS, AZUL, AZUL, ROJO]))
+                              marker_color=[CLARO, CLARO, PRINCIPAL, PRINCIPAL, OSCURO]))
     mostrar(fig, "De la base completa a la base de análisis", alto=380)
 
 mostrar = _mostrar
