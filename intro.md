@@ -8,10 +8,10 @@ authors:
 
 Seminario de investigación, Universidad del Norte · Septiembre de 2026
 
-Este libro es la fase de análisis exploratorio del proyecto *Predicción del precio de
-vivienda en Barranquilla mediante Machine Learning*. Antes de entrenar los modelos
-necesitamos saber qué parte de la base se puede usar, qué variables se relacionan con el
-precio y cómo hay que validar los resultados.
+Este libro reúne el análisis exploratorio y los modelos del proyecto *Predicción del
+precio de vivienda en Barranquilla mediante Machine Learning*. Los capítulos 1 a 6 revisan
+qué parte de la base se puede usar, qué variables se relacionan con el precio y cómo hay
+que validar los resultados. Los capítulos 7 y 8 entrenan y evalúan los modelos.
 
 La base reúne compraventas de cuatro fuentes (observatorio inmobiliario, registros
 georreferenciados, IGAC y avisos de registro) cruzadas con el catastro. Tiene 68.709
@@ -30,6 +30,10 @@ registros, de los que quedan 15.459 viviendas después de la limpieza.
 5. **Análisis geoespacial.** Mapas de ventas, precios y estratos, y dependencia espacial
    del precio.
 6. **Conclusiones.** Hallazgos para el modelo y limitaciones de la base.
+7. **Modelos de predicción.** Comparación de modelos evaluados en zonas que no vieron,
+   variables del entorno y ajuste de XGBoost.
+8. **Evaluación del modelo.** Métricas completas, cuánto depende el resultado del azar,
+   variantes del modelo, área del lote de las casas y prueba final.
 
 ## Cómo leerlo
 

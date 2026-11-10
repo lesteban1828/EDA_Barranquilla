@@ -5,8 +5,9 @@ Análisis exploratorio de compraventas, ubicación y valor catastral (2016-2025)
 Luis Esteban Mariño Bornacelli · Juan Esteban García · Camilo González
 Universidad del Norte, Seminario de investigación
 
-Este repositorio contiene el análisis exploratorio del proyecto *Predicción del precio
-de vivienda en Barranquilla mediante Machine Learning*, organizado como un Jupyter Book.
+Este repositorio contiene el análisis exploratorio y los modelos del proyecto *Predicción
+del precio de vivienda en Barranquilla mediante Machine Learning*, organizado como un
+Jupyter Book.
 
 ## Contenido
 
@@ -18,10 +19,16 @@ de vivienda en Barranquilla mediante Machine Learning*, organizado como un Jupyt
 ├── 04_avaluo.ipynb          Precio contra avalúo catastral
 ├── 05_geoespacial.ipynb     Mapas y dependencia espacial
 ├── 06_conclusiones.md       Hallazgos y limitaciones
+├── 07_modelos.ipynb         Comparación de modelos, entorno y ajuste de XGBoost
+├── 08_evaluacion.ipynb      Evaluación completa, variantes y prueba final
 ├── eda_utils.py             Preparación de la base que comparten los capítulos
+├── descargar_entorno.py     Descarga las variables del entorno de OpenStreetMap
+├── optimizar_modelo.py      Pruebas de optimización del capítulo 8 (unos 500 entrenamientos)
 ├── datos/
 │   ├── base_final_excel_es.csv       Base de compraventas
 │   ├── ipvu_nacional_banrep.csv      Índice de precios de vivienda usada (Banco de la República)
+│   ├── entorno_osm.csv               Variables del entorno (© colaboradores de OpenStreetMap)
+│   ├── terreno_casas.csv             Área del lote de las casas (Catastro de Barranquilla)
 │   └── mapa_base_barranquilla.png    Mapa de fondo (© colaboradores de OpenStreetMap)
 ├── myst.yml                 Configuración del libro
 ├── requirements.txt
@@ -63,4 +70,5 @@ El sitio queda en `_build/html`. Para verlo mientras se edita: `jupyter book sta
   registro, cruzados con el catastro de Barranquilla.
 - Inflación: variación anual del IPC, DANE.
 - Índice de precios de la vivienda usada (IPVU): Banco de la República.
-- Mapa de fondo: © colaboradores de OpenStreetMap.
+- Mapa de fondo y variables del entorno: © colaboradores de OpenStreetMap.
+- Área del lote: capa de terrenos de la Gerencia de Gestión Catastral de Barranquilla.

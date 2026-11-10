@@ -5,13 +5,15 @@ project:
   title: Determinantes del precio de la vivienda en Barranquilla
   subtitle: Análisis exploratorio de compraventas, ubicación y valor catastral (2016-2025)
   description: >-
-    Análisis exploratorio de las compraventas de vivienda en Barranquilla entre 2016 y
-    2025, construido a partir del cruce de cuatro fuentes con el catastro.
+    Análisis exploratorio y modelos de predicción del precio de las compraventas de
+    vivienda en Barranquilla entre 2016 y 2025, a partir del cruce de cuatro fuentes con
+    el catastro.
   keywords:
     - precio de vivienda
     - Barranquilla
     - catastro
     - análisis exploratorio
+    - aprendizaje automático
   toc:
     - file: intro.md
     - file: 01_datos.ipynb
@@ -20,6 +22,8 @@ project:
     - file: 04_avaluo.ipynb
     - file: 05_geoespacial.ipynb
     - file: 06_conclusiones.md
+    - file: 07_modelos.ipynb
+    - file: 08_evaluacion.ipynb
   exclude:
     - README.md
     - datos/**
