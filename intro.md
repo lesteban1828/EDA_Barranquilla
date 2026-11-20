@@ -6,34 +6,39 @@ authors:
 ---
 # Determinantes del precio de la vivienda en Barranquilla
 
-Seminario de investigación, Universidad del Norte · Septiembre de 2026
+Seminario de investigación, Universidad del Norte · Noviembre de 2026 (versión 2)
 
-Este libro reúne el análisis exploratorio y los modelos del proyecto *Predicción del
-precio de vivienda en Barranquilla mediante Machine Learning*. Los capítulos 1 a 6 revisan
-qué parte de la base se puede usar, qué variables se relacionan con el precio y cómo hay
-que validar los resultados. Los capítulos 7 y 8 entrenan y evalúan los modelos.
+Este libro es la fase de análisis exploratorio del proyecto *Predicción del precio de
+vivienda en Barranquilla mediante Machine Learning*. Antes de entrenar los modelos
+necesitamos saber qué parte de la base se puede usar, qué variables se relacionan con el
+precio y cómo hay que validar los resultados.
 
 La base reúne compraventas de cuatro fuentes (observatorio inmobiliario, registros
 georreferenciados, IGAC y avisos de registro) cruzadas con el catastro. Tiene 68.709
-registros, de los que quedan 15.459 viviendas después de la limpieza.
+registros, de los que quedan 34.606 viviendas después de la limpieza.
+
+En esta versión, las ventas del IGAC se cruzan con el catastro por la matrícula
+inmobiliaria de la unidad, y el 97,6% queda ubicado (antes, el 13%). Por eso la base de
+análisis tiene el doble de viviendas que la versión anterior.
 
 ## Capítulos
 
+0. **La base enriquecida.** Cómo se cruzó cada venta con el catastro y de dónde sale su
+   coordenada, con la validación del cruce.
 1. **Los datos.** Diccionario de variables, limpieza, datos faltantes, ajuste por
    inflación, precios por m² fuera de rango y registros duplicados.
 2. **Análisis univariado.** Distribución del precio, del área y de las características
    de las viviendas.
-3. **Análisis bivariado.** Precio frente a área, estrato, barrio, año y características,
-   y comparación con el índice de precios del Banco de la República.
+3. **Análisis bivariado.** Precio frente a área, estrato, barrio, año y características.
 4. **Precio contra avalúo catastral.** Cuánto se paga por encima del avalúo y cómo
    cambia esa diferencia entre zonas y estratos.
 5. **Análisis geoespacial.** Mapas de ventas, precios y estratos, y dependencia espacial
    del precio.
 6. **Conclusiones.** Hallazgos para el modelo y limitaciones de la base.
-7. **Modelos de predicción.** Comparación de modelos evaluados en zonas que no vieron,
-   variables del entorno y ajuste de XGBoost.
-8. **Evaluación del modelo.** Métricas completas, cuánto depende el resultado del azar,
-   variantes del modelo, área del lote de las casas y prueba final.
+7. **Modelos de predicción.** Comparación de modelos con validación por zonas, ajuste de
+   hiperparámetros y prueba final.
+8. **Evaluación del modelo y variantes.** Métricas completas, sensibilidad al azar y
+   variantes del modelo.
 
 ## Cómo leerlo
 

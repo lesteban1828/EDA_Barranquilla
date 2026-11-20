@@ -36,7 +36,11 @@ COLORES_ESTRATO = ["#B3C0CC", "#93A5B5", "#7890A3", "#577189", "#3C546B", "#2438
 # Para mapas y correlaciones
 ESCALA_SECUENCIAL = ["#D5DDE4", "#A9B8C5", "#7890A3", "#3C546B", "#1B2A38"]
 ESCALA_DIVERGENTE = [[0, "#8C6A4F"], [0.5, "#F2F2F0"], [1, "#3C546B"]]
-NO_BARRIOS = ["RURAL", "ZONA NO DESARROLLADA", "SIN LOCALIDAD"]
+NO_BARRIOS = ["RURAL", "SIN LOCALIDAD"]
+# El catastro de 2022 llama "ZONA NO DESARROLLADA" a la manzana 716 de Riomar (calles 96 a 99C,
+# carreras 64 a 72), que entonces era un lote sin urbanizar y hoy son torres de obra nueva.
+# Se renombra para tratarla como un barrio más.
+ZONA_EXPANSION = "ZONA DE EXPANSION RIOMAR"
 
 # Gráficos interactivos: el formato que lee VS Code y HTML para Jupyter
 pio.renderers.default = "plotly_mimetype+notebook_connected"
@@ -133,23 +137,24 @@ with _contextlib.redirect_stdout(_io.StringIO()):
     df.loc[df.edad < 0, "edad"] = np.nan
     df["razon_precio_avaluo"] = df.precio / df.avaluo
     df.loc[df.localidad == "SIN LOCALIDAD", "localidad"] = pd.NA
+    df.loc[df.barrio.eq("ZONA NO DESARROLLADA") & df.localidad.eq("RIOMAR"), "barrio"] = ZONA_EXPANSION
     df["estrato"] = pd.Categorical(df.estrato, categories=ORDEN_ESTRATO, ordered=True)
 
     print(f"Base completa: {n_total:,}   apto_modelo: {len(df):,} ({len(df)/n_total:.0%})")
 
     # Variación anual del IPC (diciembre a diciembre, %), DANE
-    VARIACION_IPC = {2016: 5.75, 2017: 4.09, 2018: 3.18, 2019: 3.80, 2020: 1.61,
+    VARIACION_IPC = {2015: 6.77, 2016: 5.75, 2017: 4.09, 2018: 3.18, 2019: 3.80, 2020: 1.61,
                      2021: 5.62, 2022: 13.12, 2023: 9.28, 2024: 5.20, 2025: 5.10}
 
     # índice de diciembre con base diciembre 2018 = 100
     ipc_dic = {2018: 100.0}
     for a in range(2019, 2026):
         ipc_dic[a] = ipc_dic[a - 1] * (1 + VARIACION_IPC[a] / 100)
-    for a in range(2017, 2014, -1):
+    for a in range(2017, 2013, -1):
         ipc_dic[a] = ipc_dic[a + 1] / (1 + VARIACION_IPC[a + 1] / 100)
 
     # nivel medio de cada año: media geométrica entre el diciembre anterior y el del año
-    ipc_anio = pd.Series({a: np.sqrt(ipc_dic[a - 1] * ipc_dic[a]) for a in range(2016, 2026)})
+    ipc_anio = pd.Series({a: np.sqrt(ipc_dic[a - 1] * ipc_dic[a]) for a in range(2015, 2026)})
     factor = ipc_dic[2025] / ipc_anio
 
     df["precio_real"] = df.precio * df.anio.map(factor)
